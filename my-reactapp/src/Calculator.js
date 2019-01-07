@@ -49,7 +49,7 @@ class TemperatureInput extends Component{
         // this.setState({
         //     temperature: e.target.value
         // })
-        this.props.onTemperatureChange(e.target.value)
+        this.props.onTemperatureChange(e.target.value,this.props.scale)
     }
     render(){
         const scale = this.props.scale
@@ -63,7 +63,7 @@ class TemperatureInput extends Component{
     }
 }
 function BoilingVerdict(props){
-    if(props.celsis>100){
+    if(props.celsius>=100){
         return <p>水会烧开</p>
     }else{
         return <p>水不会烧开</p>
@@ -94,23 +94,24 @@ class Calculator extends Component{
         this.handleFahrenheitChange=this.handleFahrenheitChange.bind(this)
 
     }
-    handleCelsiusChange(e){
+    handleCelsiusChange(value){
+        // console.log(e)
         this.setState({
             scale:'c',
-            temperature :e.target.value
+            temperature :value
         })
     }
-    handleFahrenheitChange(e){
+    handleFahrenheitChange(value){
         this.setState({
             scale:'f',
-            temperature :e.target.value
+            temperature :value
         })
     }
     render() {
         const scale = this.state.scale;
         const temperature = this.state.temperature;
-        const celsius = scale==='c' ? tryConvert(temperature,toFahrenheit):temperature
-        const fahrenheit = scale==='f' ? tryConvert(temperature,toCelsius):temperature
+        const celsius = scale==='f' ? tryConvert(temperature,toFahrenheit):temperature
+        const fahrenheit = scale==='c' ? tryConvert(temperature,toCelsius):temperature
         return (
           <div>
             <TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange}/>

@@ -164,11 +164,65 @@ import * as serviceWorker from './serviceWorker';
 
 
 // test13 Calculator
-import Calculator from './Calculator.js'
+// import Calculator from './Calculator.js'
+// ReactDOM.render(
+//     <Calculator />,
+//     document.getElementById('root')
+// )
+
+// test14 组合继承
+// function FancyBorder(props){
+//     return (
+//         <div className={'FancyBorder FancyBorder-'+props.color}>
+//             {props.children}
+//         </div>
+//     )
+// }
+// function WelcomeDialog(){
+//     return (
+//         <FancyBorder color="blue">
+//             <h1>Welcome</h1>
+//             <p>Thank you for visiting our spacecraft!</p>
+
+//         </FancyBorder>
+//     )
+// }
+
+// function SplitPane(props){
+//     return (
+//         <div>
+//             <div>{props.left}</div>
+//             <div>{props.right}</div>
+//         </div>
+//     )
+// }
+// function App(){
+//     return (
+//         <SplitPane left={<Left/>} right={<Right/>}/>
+//     )
+// }
+// function Left(){
+//     return (
+//         <p>left</p>
+//     )
+// }
+// function Right(){
+//     return (
+//         <p>right</p>
+//     )
+// }
+
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById('root')
+// )
+// test15
+import SignupDialog from './SignupDialog.js'
 ReactDOM.render(
-    <Calculator />,
+    <SignupDialog/>,
     document.getElementById('root')
 )
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
