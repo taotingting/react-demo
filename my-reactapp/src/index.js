@@ -217,11 +217,30 @@ import * as serviceWorker from './serviceWorker';
 //     document.getElementById('root')
 // )
 // test15
-import SignupDialog from './SignupDialog.js'
-ReactDOM.render(
-    <SignupDialog/>,
+// import SignupDialog from './SignupDialog.js'
+// ReactDOM.render(
+//     <SignupDialog/>,
+//     document.getElementById('root')
+// )
+// test16 redux
+import { createStore } from 'redux'
+import Count from './Count.js'
+import count from './reducers'
+// 安装redux-devtools-extension的可视化工具。
+import { composeWithDevTools } from 'redux-devtools-extension'
+const store = createStore(count,
+    composeWithDevTools(
+    ))
+
+const render= ()=> ReactDOM.render(
+    <Count 
+        value={store.getState()} 
+        onInCrement={()=>store.dispatch({ type: 'INCREMENT' })} 
+        onDecrement={()=>store.dispatch({ type: 'DECREMENT' })}/>,
     document.getElementById('root')
 )
+render()
+store.subscribe(render)//这是重点啊  state不然返回不了
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
